@@ -85,6 +85,23 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Folder Structure
+> src
+>> app.js  - App entry point
+> 
+>> api - Express route controllers
+> 
+>> config - env variables and configs
+> 
+>> jobs - Jobs definitions for agenda.js
+> 
+>> loaders - Split the startup process into modules
+> 
+>> models - MongoDB database models
+> 
+>> services - All business logic
+> 
+>> subscribers - Event handlers for async task
 
 
 <!-- GETTING STARTED -->
@@ -187,9 +204,9 @@ Project Link: [https://github.com/code-briomar/fpl-moneyball-api](https://github
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* [Santiago's Bulletproof Node.js architecture](https://www.softwareontheroad.com/ideal-nodejs-project-structure)
+* [README Template](https://github.com/othneildrew/Best-README-Template)
+* [Lewis' API](https://rapidapi.com/lewispour1994/api/fantasy-premier-league-fpl-api)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -198,7 +215,7 @@ Project Link: [https://github.com/code-briomar/fpl-moneyball-api](https://github
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/code-briomar/fpl-moneyball-api/graphs/contributors
+[contributors-url]: https://github.com/code-briomar/fpl-moneyball-api
 [forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
 [forks-url]: https://github.com/code-briomar/fpl-moneyball-api/fork
 [stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
