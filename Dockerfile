@@ -1,6 +1,14 @@
 FROM node:21-alpine
 LABEL authors="Briane"
 
-ENTRYPOINT ["top", "-b"]
-
 WORKDIR /app
+
+COPY package.json yarn.lock ./
+
+RUN ["npx", "yarn"]
+
+COPY . .
+
+EXPOSE 6969
+
+CMD ["npx","yarn","start"]
