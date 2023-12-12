@@ -1,13 +1,10 @@
 import express from "express";
-
+import fplRouter from "./api/fpl/index.js"
 const app = express();
 
-app.get("/",(req,res)=>{
-    res.json({
-        status:200,
-        message:"Server on PORT 6969 working"
-    })
-})
+// app.use(express.json)
+app.use(fplRouter)
+
 app.listen(6969,()=>{
     console.log("Listening on PORT 6969");
 })

@@ -66,8 +66,10 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
-
+### Aim of the project
+1. Display all the important info at a glance.
+> Opponents of the teams of my players from the first game week to the last.
+> Prevent a lot of navigation.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
