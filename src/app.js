@@ -1,6 +1,6 @@
 import express from "express";
 import fplRouter from "./api/fpl/index.js"
-const app = express();
+export const app = express();
 
 // app.use(express.json)
 app.use(fplRouter)
