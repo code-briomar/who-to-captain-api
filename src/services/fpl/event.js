@@ -1,8 +1,8 @@
 import {fetchEntryEvent} from "fpl-api";
 
 // Event that took place during a gameweek
-// entryID - Event That happened
+// managerID - ID of Manager
 // eventID - Gameweek ID
-export const event = async (entryID, eventID) =>{
-    return fetchEntryEvent(entryID,eventID)
+export const event = async (managerID, eventID) =>{
+    return fetchEntryEvent(managerID,eventID)
 }
