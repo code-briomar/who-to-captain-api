@@ -4,6 +4,7 @@ import {specificPlayer} from "../../services/fpl/specificPlayer.js";
 import {fixtures} from "../../services/fpl/fixtures.js";
 import {event} from "../../services/fpl/event.js";
 import {getTeam} from "../../services/fpl/getTeam.js";
+import {futureFixtures} from "../../services/fpl/futureFixtures.js";
 
 const router = Router();
 
@@ -66,8 +67,11 @@ router.get("/team-per-gameweek/:IDs",async(req,res)=>{
         team_id = elementSummary["fixtures"][0].team_a;
     }
 
-    const elementTeam = await getTeam(team_id);
-    console.log(elementTeam)
+    //Custom Service to Pull Future Fixtures
+    const upcomingFixturesAPI = await futureFixtures();
+    //Store the data portion of the incoming response
+    const upcomingFixtures = upcomingFixturesAPI.data;
+    console.log(upcomingFixtures)
     res.status(200).json(data)
 })
 export default  router;
