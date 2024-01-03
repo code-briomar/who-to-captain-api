@@ -1,12 +1,12 @@
-import { Router} from "express";
-import {fetchBootstrap, fetchElementSummary, fetchFixtures} from 'fpl-api'
+import {Router} from "express";
+import {fetchBootstrap, fetchFixtures} from 'fpl-api'
 import {specificPlayer} from "../../services/fpl/specificPlayer.js";
 import {fixtures} from "../../services/fpl/fixtures.js";
 import {event} from "../../services/fpl/event.js";
-import {getTeam} from "../../services/fpl/getTeam.js";
-import {futureFixtures} from "../../services/fpl/futureFixtures.js";
+import {teamPerGameweek} from "../../services/teamPerGameweek.js";
 
 const router = Router();
+export const eventEmitter = new EventEmitter();
 
 router.get("/general-info",async (req, res)=>{
     const data = await fetchBootstrap();
@@ -44,71 +44,10 @@ router.get("/specific-player:playerID",async(req,res)=>{
 })
 
 router.get("/team-per-gameweek/:IDs",async(req,res)=>{
-    const responseList = []
     //managerID - ID of FPL player
     //eventID - Gameweek no.
     const { managerID, eventID } = JSON.parse(req.params["IDs"]);
-    const data = await event(managerID,eventID);
-
-    //Get the entries of the specific elements
-
-    const picks = data["picks"];
-    // Get the elements from `data`
-    const elementList = []
-    for(let i = 0; i < picks.length; i++){
-        elementList.push(picks[i].element)
-    }
-
-    //Loop to fetch specific player information
-    const playerSummaryList = []
-    for(let i = 0; i < elementList.length; i++) {
-        const elementSummary = await specificPlayer(elementList[i])
-        playerSummaryList.push(elementSummary)
-    }
-
-    for(let i = 0; i < playerSummaryList.length; i++) {
-        let team_id = 0
-        // If is_home is true, then the team ID is the team_h ID, else, the team ID is the team_a
-        if (playerSummaryList[i]["fixtures"][0].is_home === true) {
-            team_id = playerSummaryList[i]["fixtures"][0].team_h;
-        } else {
-            team_id = playerSummaryList[i]["fixtures"][0].team_a;
-        }
-
-        //Custom Service to Pull Future Fixtures
-        const upcomingFixturesAPI = await futureFixtures();
-        //Store the data portion of the incoming response
-        const upcomingFixtures = upcomingFixturesAPI.data;
-        const elementSevenFutureFixtures = upcomingFixtures
-            //Filter future fixtures for player
-            .filter(eachFixureObject => eachFixureObject.team_a === team_id || eachFixureObject.team_h === team_id)
-            //Limit the items to 7
-            .slice(0, 7)
-        for (let i = 0; i < elementSevenFutureFixtures.length; i++) {
-            responseList.push({
-                fixtureID: elementSevenFutureFixtures[i].id, //eventID
-                playerID: playerSummaryList[i].id, //elementID
-                teamID: team_id,
-                homeTeamID: playerSummaryList[i]["fixtures"][0].team_h, //team_h
-                awayTeamID: playerSummaryList[i]["fixtures"][0].team_a, //team_a
-                homeTeamDifficulty: elementSevenFutureFixtures[i].team_h_difficulty, //team_h_difficulty
-                awayTeamDifficulty: elementSevenFutureFixtures[i].team_a_difficulty,//team_a_difficulty
-                kickOffTime: elementSevenFutureFixtures[i].kickoff_time
-            })
-        }
-        //Build response list
-        // const responseList = [{
-        //     fixtureID : '', //eventID
-        //     playerID: '', //elementID
-        //     teamID : team_id,
-        //     homeTeamID: '', //team_h
-        //     awayTeamID: '', //team_a
-        //     homeTeamDifficulty: '', //team_h_difficulty
-        //     awayTeamDifficulty: ''//team_a_difficulty
-        //     kickOffTime: ''
-        // }]
-    }
-    // console.log(responseList)
+    const responseList = teamPerGameweek(managerID, eventID)
     res.status(200).json(responseList)
 })
 export default  router;
