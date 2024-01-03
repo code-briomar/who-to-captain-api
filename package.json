@@ -1,12 +1,13 @@
 {
   "name": "fpl-moneyball-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/app.js",
   "repository": "https://github.com/code-briomar/fpl-moneyball-api.git",
   "author": "Braine Lomoni <kapolonbraine@gmail.com>",
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "dev": "node main",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest --testTimeout=70000"
   },
   "dependencies": {
