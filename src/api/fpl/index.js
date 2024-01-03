@@ -3,10 +3,9 @@ import {fetchBootstrap, fetchFixtures} from 'fpl-api'
 import {specificPlayer} from "../../services/fpl/specificPlayer.js";
 import {fixtures} from "../../services/fpl/fixtures.js";
 import {event} from "../../services/fpl/event.js";
-import {teamPerGameweek} from "../../services/teamPerGameweek.js";
+import {futureFixturesDifficulty} from "../../services/teamPerGameweek.js";
 
 const router = Router();
-export const eventEmitter = new EventEmitter();
 
 router.get("/general-info",async (req, res)=>{
     const data = await fetchBootstrap();
@@ -43,11 +42,11 @@ router.get("/specific-player:playerID",async(req,res)=>{
     res.status(200).json(data)
 })
 
-router.get("/team-per-gameweek/:IDs",async(req,res)=>{
+router.get("/future-fixtures-difficulty/:IDs",async(req,res)=>{
     //managerID - ID of FPL player
     //eventID - Gameweek no.
     const { managerID, eventID } = JSON.parse(req.params["IDs"]);
-    const responseList = teamPerGameweek(managerID, eventID)
+    const responseList = await futureFixturesDifficulty(managerID, eventID)
     res.status(200).json(responseList)
 })
 export default  router;

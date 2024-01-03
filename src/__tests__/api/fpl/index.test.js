@@ -42,7 +42,7 @@ describe("Test GET /fixtures",()=>{
     })
 })
 
-describe("Test GET /team-per-gameweek/:IDs",()=>{
+describe("Test GET /future-fixtures-difficulty/:IDs",()=>{
     const testData = {
         managerID: 4791912,
         eventID: 8
@@ -52,20 +52,27 @@ describe("Test GET /team-per-gameweek/:IDs",()=>{
 
     test("Should return 200",async()=>{
         await request(app)
-            .get(`/team-per-gameweek/${params}`)
+            .get(`/future-fixtures-difficulty/${params}`)
             .expect(200)
     })
 
     test("Content Type Should be JSON",async()=>{
         await request(app)
-            .get(`/team-per-gameweek/${params}`)
+            .get(`/future-fixtures-difficulty/${params}`)
             .expect("Content-Type",/json/)
     })
 
-    // test("JSON should have `picks` body",async()=>{
-    //     const response = await request(app)
-    //         .get(`/team-per-gameweek/${params}`)
-    //
-    //     expect(response.body).toHaveProperty("picks")
-    // })
+    test("JSON body props",async()=>{
+        const response = await request(app)
+            .get(`/future-fixtures-difficulty/${params}`)
+
+        expect(response.body[0]).toHaveProperty("fixtureID")
+        expect(response.body[0]).toHaveProperty("playerID")
+        expect(response.body[0]).toHaveProperty("teamID")
+        expect(response.body[0]).toHaveProperty("homeTeamID")
+        expect(response.body[0]).toHaveProperty("awayTeamID")
+        expect(response.body[0]).toHaveProperty("homeTeamDifficulty")
+        expect(response.body[0]).toHaveProperty("awayTeamDifficulty")
+        expect(response.body[0]).toHaveProperty("kickOffTime")
+    })
 })

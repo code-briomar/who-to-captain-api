@@ -2,7 +2,7 @@ import {event} from "./fpl/event.js";
 import {specificPlayer} from "./fpl/specificPlayer.js";
 import {futureFixtures} from "./fpl/futureFixtures.js";
 
-export const teamPerGameweek = async (managerID, eventID) =>{
+export const futureFixturesDifficulty = async (managerID, eventID) =>{
     const responseList = []
     const data = await event(managerID,eventID);
     //Get the entries of the specific elements
