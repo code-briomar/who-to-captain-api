@@ -2,5 +2,5 @@
 import {fetchElementSummary} from "fpl-api";
 
 export const specificPlayer = async (playerID) =>{
-    return await fetchElementSummary(playerID);
+    return await fetchElementSummary(playerID)
 }
