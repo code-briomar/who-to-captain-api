@@ -66,3 +66,8 @@ If you have any feedback, please reach out to me at kapolonbraine@gmail.com
 - FPL Players Expected Points (xP)
 - FPL Players Recent Form
 
+## WishList
+
+- Extended league tables for head to head.
+- This week's transfers made to the league table.
+- live gameweek + total points in league table, either as separate columns / making the GW and TOT columns "live"
