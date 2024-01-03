@@ -76,3 +76,11 @@ describe("Test GET /future-fixtures-difficulty/:IDs",()=>{
         expect(response.body[0]).toHaveProperty("kickOffTime")
     })
 })
+
+describe("Test GET /expected-points/",()=>{
+    test("Status 200 - Successful",async()=>{
+        await request(app)
+            .get("/expected-points/")
+            .expect(200)
+    })
+})
