@@ -5,6 +5,8 @@ import {fixtures} from "../../services/fpl/fixtures.js";
 import {event} from "../../services/fpl/event.js";
 import {futureFixturesDifficulty} from "../../services/teamPerGameweek.js";
 import {generalInfo} from "../../services/fpl/generalInfo.js";
+import {playerExpectedPoints} from "../../services/playerExpectedPoints.js";
+import {playerForm} from "../../services/playerForm.js";
 
 const router = Router();
 
@@ -16,10 +18,15 @@ router.get("/future-fixtures-difficulty/:IDs",async(req,res)=>{
     res.status(200).json(responseList)
 })
 
-router.get("/expected-points/",async(req, res)=>{
-    const playersData = await generalInfo();
-    const filteredPlayers = playersData["elements"].filter(eachPlayer=>eachPlayer.id === 5)
-    console.log( filteredPlayers[0].ep_next )
-    res.status(200).json()
+router.get("/expected-points/:IDs",async(req, res)=>{
+    const { managerID, eventID } = JSON.parse(req.params["IDs"]);
+    const filteredPlayers = await playerExpectedPoints(managerID,eventID)
+    res.status(200).json(filteredPlayers)
+})
+
+router.get("/player-form/:IDs",async(req, res)=>{
+    const { managerID, eventID } = JSON.parse(req.params["IDs"]);
+    const filteredPlayers = await playerForm(managerID,eventID)
+    res.status(200).json(filteredPlayers)
 })
 export default  router;
