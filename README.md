@@ -21,7 +21,27 @@ Upgrade your FPL squad with an API that's more insightful than Meg's love life.
 | `managerID` | `int` | **Required**. Your FPL ID |
 | `eventID` | `int` | **Required**. Game week ID on FPL |
 
+#### Get expected points per player for your squad
 
+```http
+  GET /expected-points/:IDs
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `managerID` | `int` | **Required**. Your FPL ID |
+| `eventID` | `int` | **Required**. Game week ID on FPL |
+
+#### Get form and value form per player for your squad
+
+```http
+  GET /player-form/:IDs
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `managerID` | `int` | **Required**. Your FPL ID |
+| `eventID` | `int` | **Required**. Game week ID on FPL |
 
 ## Authors
 
