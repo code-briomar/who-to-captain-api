@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "node main",
+    "dev": "node src/app.js",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest --testTimeout=70000"
   },
   "dependencies": {
