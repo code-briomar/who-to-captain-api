@@ -8,17 +8,19 @@
   "type": "module",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "node main",
+    "dev": "node src/app.js",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest --testTimeout=70000"
   },
   "dependencies": {
     "axios": "^1.6.3",
     "express": "^4.18.2",
-    "fpl-api": "^4.0.4"
+    "fpl-api": "^4.0.4",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "jest": "^29.7.0",
-    "supertest": "^6.3.3",
-    "cross-env": "^7.0.3"
+    "supertest": "^6.3.3"
   }
 }
