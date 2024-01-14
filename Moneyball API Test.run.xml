@@ -9,7 +9,7 @@
     <scope-kind value="SUITE" />
     <test-file value="$PROJECT_DIR$/src/__tests__/api/fpl/index.test.js" />
     <test-names>
-      <test-name value="Test GET /future-fixtures-difficulty/:IDs" />
+      <test-name value="Test GET /player-form/:managerID" />
     </test-names>
     <method v="2" />
   </configuration>

@@ -1,8 +1,12 @@
 import {generalInfo} from "./fpl/generalInfo.js";
 import {event} from "./fpl/event.js";
+import {currentGameWeekStatus} from "./fpl/currentGameWeekStatus.js";
 
-export const playerForm = async (managerID,eventID) =>{
-    const data = await event(managerID,eventID);
+export const playerForm = async (managerID) =>{
+    //Fetch current game week
+    const GameweekResponse = await currentGameWeekStatus();
+    const currentGameweek = GameweekResponse.status[0].event;
+    const data = await event(managerID,currentGameweek);
     //Get the entries of the specific elements
     const picks = data["picks"];
     // Get the elements from `data`
