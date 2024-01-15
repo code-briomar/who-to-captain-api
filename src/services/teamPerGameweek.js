@@ -39,7 +39,6 @@ export const futureFixturesDifficulty = async (managerID) =>{
         const elementSevenFutureFixtures = (teamFixturesMap[team_id] || [])
             //Limit the items to 7
             .slice(0, 7)
-
         const playerFixtures = elementSevenFutureFixtures.map((fixture) => ({
         playerID:playerSummaryList[i].id, //elementID.,
         data:{
@@ -47,6 +46,7 @@ export const futureFixturesDifficulty = async (managerID) =>{
             first_name: first_name,
             second_name: second_name,
             position: position,
+            benched : picks[i].multiplier === 0,
             teamID: team_id,
             homeTeamID: playerSummaryList[i]["fixtures"][0].team_h, //team_h
             awayTeamID: playerSummaryList[i]["fixtures"][0].team_a, //team_a
