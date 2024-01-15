@@ -2,7 +2,6 @@ import {Router} from "express";
 import {futureFixturesDifficulty} from "../../services/teamPerGameweek.js";
 import {playerExpectedPoints} from "../../services/playerExpectedPoints.js";
 import {playerForm} from "../../services/playerForm.js";
-import {fetchCurrentGameweek} from "../../services/fetchCurrentGameweek.js";
 
 const router = Router();
 

@@ -16,9 +16,9 @@ export const playerForm = async (managerID) =>{
     for(let i = 0; i < elementList.length; i++){
         playersData["elements"].filter(eachElementObject=>{
             const pushedObject = {
-                playerID : eachElementObject.id,
-                playerForm : eachElementObject.form,
-                playerValueForm : eachElementObject.value_form,
+                player_first_name : eachElementObject.first_name,
+                player_second_name : eachElementObject.second_name,
+                player_form : eachElementObject.form,
             }
             eachElementObject.id === elementList[i] ? filteredPlayers.push(pushedObject):null
         })

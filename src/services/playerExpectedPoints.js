@@ -16,7 +16,8 @@ export const playerExpectedPoints = async (managerID) =>{
     for(let i = 0; i < elementList.length; i++){
         playersData["elements"].filter(eachElementObject=>{
             const pushedObject = {
-                playerID : eachElementObject.id,
+                player_first_name : eachElementObject.first_name,
+                player_second_name : eachElementObject.second_name,
                 playerEPThisFixture : eachElementObject.ep_this,
                 playerEPNextFixture : eachElementObject.ep_next
             }

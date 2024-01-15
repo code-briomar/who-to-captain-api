@@ -2,6 +2,7 @@ import {event} from "./fpl/event.js";
 import {specificPlayer} from "./fpl/specificPlayer.js";
 import {futureFixtures} from "./fpl/futureFixtures.js";
 import {currentGameWeekStatus} from "./fpl/currentGameWeekStatus.js";
+import {generalInfo} from "./fpl/generalInfo.js";
 
 export const futureFixturesDifficulty = async (managerID) =>{
     //Fetch current game week
@@ -26,16 +27,24 @@ export const futureFixturesDifficulty = async (managerID) =>{
         (map[fixture.team_h] || (map[fixture.team_h] = [])).push(fixture)
         return map
     },{})
+
+    //Fetch Player Names from generalInfo() using elementList
+    const generalData = await generalInfo();
+    const playerNames = generalData["elements"].filter(eachElementObject => elementList.includes(eachElementObject.id))
+    console.log(playerNames)
     for(let i = 0; i < playerSummaryList.length; i++) {
         let team_id = playerSummaryList[i]["fixtures"][0].is_home === true ? playerSummaryList[i]["fixtures"][0].team_h : playerSummaryList[i]["fixtures"][0].team_a
-
+        let first_name = playerNames[i].first_name;
+        let second_name = playerNames[i].second_name;
         const elementSevenFutureFixtures = (teamFixturesMap[team_id] || [])
             //Limit the items to 7
             .slice(0, 7)
 
-        const playerFixtures = elementSevenFutureFixtures.map((fixture, i) => ({
+        const playerFixtures = elementSevenFutureFixtures.map((fixture) => ({
             fixtureID: fixture.id, //eventID
-            playerID: playerSummaryList[i].id, //elementID
+            playerID: playerSummaryList[i].id, //elementID.
+            first_name: first_name,
+            second_name: second_name,
             teamID: team_id,
             homeTeamID: playerSummaryList[i]["fixtures"][0].team_h, //team_h
             awayTeamID: playerSummaryList[i]["fixtures"][0].team_a, //team_a
