@@ -40,9 +40,8 @@ export const futureFixturesDifficulty = async (managerID) =>{
     const fieldedPlayers = picks.filter(eachPick => eachPick.multiplier !== 0);
     const fieldedPlayersElementIDs = fieldedPlayers.map(eachFieldedPlayer => eachFieldedPlayer.element)
     const fieldedPlayerNames = generalData["elements"].filter(eachElementObject => fieldedPlayersElementIDs.includes(eachElementObject.id))
-    const temporaryFieldedPlayersList = []
     fieldedPlayers.map(eachFieldedPlayer => {
-        temporaryFieldedPlayersList.push({
+        responseList.push({
             playerID: eachFieldedPlayer.element,
             data:{
             isCaptain: eachFieldedPlayer.is_captain,
@@ -58,39 +57,5 @@ export const futureFixturesDifficulty = async (managerID) =>{
             kickOffTime: teamFixturesMap[playerSummaryList.filter(eachPlayer => eachPlayer.id === eachFieldedPlayer.element)[0]["fixtures"][0].team_a][0].kickoff_time
         }})
     })
-    console.log(temporaryFieldedPlayersList)
-    responseList.push(...temporaryFieldedPlayersList)
-    // for(let i = 0; i < playerSummaryList.length; i++) {
-    //     // Check if the player's ID is in the benched players list
-    //     const isPlayerBenched = benchedPlayersElementIDs.includes(playerSummaryList[i].id);
-    //
-    //     if(isPlayerBenched){
-    //         console.log(playerNames[i].first_name + " " + playerNames[i].second_name + " is benched : Position: " + picks[i].position)
-    //     }
-    //
-    //     let team_id = playerSummaryList[i]["fixtures"][0].is_home === true ? playerSummaryList[i]["fixtures"][0].team_h : playerSummaryList[i]["fixtures"][0].team_a
-    //     let first_name = playerNames[i].first_name;
-    //     let second_name = playerNames[i].second_name;
-    //     let position = generalData["element_types"].filter(eachElementObject => eachElementObject.id === playerNames[i].element_type)[0].singular_name_short
-    //     const elementSevenFutureFixtures = (teamFixturesMap[team_id] || [])
-    //         //Limit the items to 7
-    //         .slice(0, 7)
-    //     const playerFixtures = elementSevenFutureFixtures.map((fixture) => ({
-    //     playerID:playerSummaryList[i].id, //elementID.,
-    //     data:{
-    //         fixtureID: fixture.id, //eventID
-    //         first_name: first_name,
-    //         second_name: second_name,
-    //         position: position,
-    //         benched : isPlayerBenched,
-    //         teamID: team_id,
-    //         homeTeamID: playerSummaryList[i]["fixtures"][0].team_h, //team_h
-    //         awayTeamID: playerSummaryList[i]["fixtures"][0].team_a, //team_a
-    //         homeTeamDifficulty: fixture.team_h_difficulty, //team_h_difficulty
-    //         awayTeamDifficulty: fixture.team_a_difficulty,//team_a_difficulty
-    //         kickOffTime: fixture.kickoff_time
-    //     }}))
-    //     responseList.push(...playerFixtures)
-    // }
     return responseList;
 }
