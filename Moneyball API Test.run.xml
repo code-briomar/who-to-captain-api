@@ -12,6 +12,7 @@
       <test-name value="Test GET /future-fixtures-difficulty/:managerID" />
       <test-name value="Test GET /expected-points/:managerID" />
       <test-name value="Test GET /player-form/:managerID" />
+      <test-name value="Test GET /who-to-captain" />
     </test-names>
     <method v="2" />
   </configuration>
