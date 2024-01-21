@@ -3,13 +3,12 @@ import {specificPlayer} from "./fpl/specificPlayer.js";
 import {futureFixtures} from "./fpl/futureFixtures.js";
 import {currentGameWeekStatus} from "./fpl/currentGameWeekStatus.js";
 import {generalInfo} from "./fpl/generalInfo.js";
+import {getCurrentGameWeekEvents} from "./utils/getCurrentGameWeekEvents.js";
 
 export const futureFixturesDifficulty = async (managerID) =>{
-    //Fetch current game week
-    const GameweekResponse = await currentGameWeekStatus();
-    const currentGameweek = GameweekResponse.status[0].event;
     const responseList = []
-    const data = await event(managerID,currentGameweek);
+    //Fetch current game week
+    const data = await getCurrentGameWeekEvents(managerID);
     //Get the entries of the specific elements
     const picks = data["picks"];
     // Get the elements from `data`
