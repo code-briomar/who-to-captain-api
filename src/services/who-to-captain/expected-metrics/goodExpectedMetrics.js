@@ -4,10 +4,10 @@ import {fixtureDifficultyFactors} from "./fixture-difficulty-factors.js";
 import {transfersStats} from "./transfers-stats.js";
 import {overallIndex} from "./overall-index.js";
 
-export const goodExpectedMetrics = (playersData,managerID) => {
+export const goodExpectedMetrics = async (playersData,managerID) => {
     playersData = expectedGoals(playersData)
     playersData = bonusPointSystem(playersData)
-    // playersData = fixtureDifficultyFactors(playersData) - Currently not working
+    playersData = await fixtureDifficultyFactors(playersData, managerID)
     // playersData = captaincyHistory(playersData, managerID) - Currently not working
     playersData = transfersStats(playersData)
     playersData = overallIndex(playersData)
