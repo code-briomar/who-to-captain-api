@@ -10,5 +10,5 @@ export const goodExpectedMetrics = async (playersData,managerID) => {
     playersData = await fixtureDifficultyFactors(playersData, managerID)
     playersData = transfersStats(playersData)
     // playersData = overallIndex(playersData)
-    return playersData[0]
+    return playersData
 }
