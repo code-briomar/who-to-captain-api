@@ -4,5 +4,5 @@
  */
 
 export const filterOutAvailablePlayers = (playersData) => {
-    return playersData.filter(player => player.chance_of_playing_this_round === 100 && player.status === "a");
+    return playersData.filter(player => player.chance_of_playing_this_round > 50 /*&& player.status === "a"*/);
 }
