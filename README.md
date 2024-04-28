@@ -1,7 +1,7 @@
 
-# FPL Moneyball API
+# Who to Captain API
 
-Upgrade your FPL squad with an API that's more insightful than Meg's love life.
+Fetch a shortlist for your FPL captain for this game week.
 
 ## Deployment
 Deployed on : [https://fpl-moneyball-api.onrender.com](https://fpl-moneyball-api.onrender.com)
@@ -12,43 +12,18 @@ Deployed on : [https://fpl-moneyball-api.onrender.com](https://fpl-moneyball-api
  - [BulletProof NODE JS](https://github.com/santiq/bulletproof-nodejs)
 ## API Reference
 
-#### Get future fixture difficulty for your squad
-
+### Fetch a shortlist of 5 players from your squad who could be legible to be captained.
 ```http
-  GET /future-fixtures-difficulty/:IDs
+  GET /who-to-captain/:ID
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `managerID` | `int` | **Required**. Your FPL ID |
-| `eventID` | `int` | **Required**. Game week ID on FPL |
-
-#### Get expected points per player for your squad
-
-```http
-  GET /expected-points/:IDs
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `managerID` | `int` | **Required**. Your FPL ID |
-| `eventID` | `int` | **Required**. Game week ID on FPL |
-
-#### Get form and value form per player for your squad
-
-```http
-  GET /player-form/:IDs
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `managerID` | `int` | **Required**. Your FPL ID |
-| `eventID` | `int` | **Required**. Game week ID on FPL |
+| `managerID` | `int` | **Required**. Your FPL Manager ID |
 
 ## Authors
 
 - [@code-briomar](https://www.github.com/code-briomar)
-
 
 ## Badges
 
@@ -84,12 +59,11 @@ If you have any feedback, please reach out to me at kapolonbraine@gmail.com
 
 ## Features
 
-- FPL Fixture Difficulty Rating
-- FPL Players Expected Points (xP)
-- FPL Players Recent Form
+- Simple Prediction Model using Javascript's `filter` and `sort` algorithms to obtain a shortlist of 5 'captainable' players.
 
 ## WishList
 
-- Extended league tables for head to head.
-- This week's transfers made to the league table.
-- live gameweek + total points in league table, either as separate columns / making the GW and TOT columns "live"
+- Analyze players `news` data using the chatgpt api's to improve accuracy of the prediction model.
+- Playing Position: Take into account the playing position of players and their role in the team. Certain positions, such as forwards or attacking midfielders, may have higher potential for captaincy points due to goal-scoring opportunities.
+- Bonus Point Potential: Factor in players' potential to earn bonus points based on their contributions beyond goals and assists, such as clean sheets for defenders or midfielders.
+- Fixture Rotation Risk: Evaluate the risk of fixture rotation for players, especially in teams with deep squads or busy schedules, as it may impact their playing time and captaincy potential.
