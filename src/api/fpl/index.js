@@ -9,7 +9,7 @@ const router = Router();
 
 router.get("/", (req, res) => {
     res.status(200).json({
-        message: "Upgrade your FPL squad with an API that's more insightful than Meg's love life. - With the FPL Moneyball API"
+        message: "Fetch a shortlist for your FPL captain for this game week."
     })
 })
 
