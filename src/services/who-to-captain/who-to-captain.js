@@ -9,10 +9,11 @@ export const whoToCaptain = async (managerID) => {
     // Filter out injured players
     playersData = filterOutAvailablePlayers(playersData)
     //Filter out poor performing players
-    playersData = filterOutPoorPerformingPlayers(playersData)
+    // playersData = filterOutPoorPerformingPlayers(playersData)
     //Best Player to Captain based on Expected Metrics
-    playersData = goodExpectedMetrics(playersData, managerID)
+    playersData = await goodExpectedMetrics(playersData, managerID)
+    console.table("Players Data: "+playersData);
     // let bestCaptain = selectBestCaptain(await playersData);
     // bestCaptain = await playersData;
-    return await playersData;
+    return playersData;
 }
